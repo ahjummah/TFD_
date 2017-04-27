@@ -15,6 +15,7 @@ Labeling:
 
 - The presence of user mention should be there.
 - The insult should be directed to the user being mentioned by the @user.
+- Libog sha unsaon pag label jd hahahaha
 
 Preprocessing:
 

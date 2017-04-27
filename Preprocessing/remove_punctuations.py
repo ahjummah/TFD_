@@ -5,6 +5,7 @@ import regex as re
 def removePunctuations(tweet):
 
      out = tweet.translate(None, r"!\"#$%&'()*+,./:;<=>?-[\]^_`{|}~")
+     out = out.translate(None, '0123456789')
 
      return out
 
