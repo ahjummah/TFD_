@@ -1,41 +1,32 @@
-from nltk.corpus import stopwords
 from cStringIO import StringIO
 stop = []
 
-# string = "i kick the seat up hip shake the pants down and aim hands free and you dumb motherfuckers still want me to wash my hands get wrecked"
-# for i in string.lower().split():
-#      if i not in stop:
-#          print i
-
 def retrieve_stopwords():
-    with open('../Dataset/stopwords_list.txt','r') as f:
+    with open('stopwords_list.txt','r') as f:
         for line in f.readlines():
             stop.append(str(line).strip())
-    print stop
 
-def remove_words():
-    print "ok"
-    with open('../Dataset/tweets-removed-punctuations-test.csv','r') as f:
-        for line in f.readlines():
-            new_tweet = " "
-            tweet=line[:-3]
-            # print tweet
+def remove_words(tweet):
+    new_tweet = ""
+    for i in tweet.lower().split():
+         if i not in stop:
+             new_tweet += i + " "
+    return new_tweet
 
-            label = line[-2:]
-            for i in tweet.lower().split():
-                 if i not in stop:
-                     print i
-                     new_tweet += i + " "
-            print new_tweet
-            write_to_file(new_tweet,label)
+if __name__ == "__main__":
+    retrieve_stopwords()
+    with open('tweets-removed-punctuations-test.csv','r') as r, open('../Training_ Dataset/2500_training_data.csv','a') as w:
+        reader = csv.DictReader(r)
 
-def write_to_file(new_tweet, label):
-    with open('../Dataset/2500_training_data.csv','a') as w:
-        w.write(new_tweet+","+label)
+        fieldnames = ['tweet','label']
+        writer = csv.DictWriter(w, fieldnames=fieldnames)
+
+        for row in reader:
+            tweets.append(row)
 
 
+        writer.writeheader()
 
-retrieve_stopwords()
-remove_words()
-# write_to_file()
-# print removed_stopwords
+        for t in tweets:
+            ar = t['tweet'].lower()
+            writer.writerow({'tweet': remove_words(ar), 'label':t['label']})
