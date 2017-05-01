@@ -1,10 +1,18 @@
 from cStringIO import StringIO
-stop = []
+import csv
 
-def retrieve_stopwords():
-    with open('stopwords_list.txt','r') as f:
-        for line in f.readlines():
-            stop.append(str(line).strip())
+stop = ['we','our','ours','ourselves','he','him','his','himself', 'she', 'her', 'hers', 'herself', 'it',
+    'its', 'itself','they','them','their','theirs','themselves','what','which','who','whom','this',
+    'that','these','those','am','is','are', 'was','were','be', 'been', 'being','have','has','had',
+    'having','do','does','did','doing','a', 'an','the','and','but','if','or','because','as','until',
+    'while','of','at','by','for','with','about', 'against','between','into','through','during',
+    'before','after','above','below','to','from','up','down','in','out','on','off','over','under',
+    'again','further','then','once','here','there','when','where','why','how','all','any','both',
+    'each','few','more','most','other','some','such','no','nor','only','own','same','so','than',
+    'too','very','can','will','just','dont','should','now'
+    ];
+
+
 
 def remove_words(tweet):
     new_tweet = ""
@@ -14,8 +22,10 @@ def remove_words(tweet):
     return new_tweet
 
 if __name__ == "__main__":
-    retrieve_stopwords()
-    with open('tweets-removed-punctuations-test.csv','r') as r, open('../Training_ Dataset/2500_training_data.csv','a') as w:
+    tweets = []
+    # with open('tweets-removed-punctuations-test.csv','r') as r, open('../Training_ Dataset/2500_training_data.csv','a') as w:
+    with open('TEST_2.csv','r') as r, open('TEST_out.csv','a') as w:
+
         reader = csv.DictReader(r)
 
         fieldnames = ['tweet','label']

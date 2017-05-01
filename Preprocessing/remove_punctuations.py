@@ -1,6 +1,5 @@
 import string
 import csv
-import regex as re
 
 def removePunctuations(tweet):
 
