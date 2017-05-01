@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     tweets = []
 
-    with open("../Dataset/final-data.csv",'r') as r, open("../Dataset/tweets-removed-punctuations-test.csv", 'a') as w:
+    with open("../Training_Dataset/2500_training_data.csv",'r') as r, open("../Training_Dataset/2500_training_data_nonum.csv", 'a') as w:
         reader = csv.DictReader(r)
 
         fieldnames = ['tweet','label']
