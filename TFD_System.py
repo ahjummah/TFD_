@@ -16,8 +16,10 @@ auth.set_access_token(access_token,access_token_secret)
 api = tweepy.API(auth)
 filters = []
 
+# GET https://api.twitter.com/1.1/statuses/mentions_timeline.json?count=2&since_id=14927799pp
+
 def getTweet():
-    
+
     with open("../Dataset/new-data.csv","a") as f:
         for tweet in tweepy.Cursor(api.search, q= "you ",lang="en").items():
             if not((tweet.text).startswith("RT")):
