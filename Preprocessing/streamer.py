@@ -14,21 +14,18 @@ access_token_secret = 'r3VUelauchouO0JGnTkwXNbHNlUdxQrwKC1WbazvQWM8f'
 auth = OAuthHandler(consumer_key,consumer_secret)
 auth.set_access_token(access_token,access_token_secret)
 api = tweepy.API(auth)
-filters = []
-
-def get_profanitylist():
-    with open('profanity_dictionary.txt','r') as f:
-        for line in f.readlines():
-            filters.append(str(line))
-    for i in range(131,len(filters)):
-        word = (filters[i]).rstrip()
-        getTweet(word)
+#
+# def get_profanitylist():
+#     with open('profanity_dictionary.txt','r') as f:
+#         for line in f.readlines():
+#             filters.append(str(line))
+#     for i in range(131,len(filters)):
+#         word = (filters[i]).rstrip()
+#         getTweet(word)
 
 def getTweet():
-    # print word
-
-    with open("../Dataset/new-data.csv","a") as f:
-        for tweet in tweepy.Cursor(api.search, q= "you ",lang="en").items():
+    with open("../Evaluating_Dataset/new-data.csv","a") as f:
+        for tweet in tweepy.Cursor(api.search,lang="en").items():
             if not((tweet.text).startswith("RT")):
                 if "http" not in tweet.text and "www" not in tweet.text and "https" not in tweet.text:
                     print tweet.text
