@@ -30,4 +30,7 @@ Feature Extraction:
 
 Possible Reasons why classifier's accuracy is low:
 - Every username is different so it might take a little time for the classifier to learn the significance of the "@"
-- Informal language is difficult
+
+
+Recommendation: 
+- Have the dataset be focused only twitter mentions because mao rman gihapon na ang notifications imong madawat sa twitter. So dapat ground truth next time nga naa juy usermentions tanan ok?
