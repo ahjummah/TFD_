@@ -5,14 +5,21 @@ def removePunctuations(tweet):
 
      out = tweet.translate(None, r"!\"#$%&'()*+,./:;<=>?-[\]^_`{|}~")
      out = out.translate(None, '0123456789')
+     tweet = out.split(" ")
+     for word in tweet:
+         if "@" in word:
+             tweet.remove(word)
 
-     return out
+     return ' '.join(tweet)
+
+
+
 
 if __name__ == "__main__":
 
     tweets = []
 
-    with open("../Evaluating_Dataset/dataset_1.csv",'r') as r, open("../Evaluating_Dataset/dataset_1_no_punc.csv", 'a') as w:
+    with open("../Training_Dataset/2500_training_data_2.csv",'r') as r, open("../Training_Dataset/2500_training_data_3.csv", 'a') as w:
         reader = csv.DictReader(r)
 
         fieldnames = ['tweet','label']
